@@ -1,0 +1,165 @@
+.App {
+  text-align: center;
+}
+.ant-table-tbody .ant-table-cell {
+  background-color: #121312;
+  color: white;
+  font-size:medium;
+}
+.ant-table-thead  .ant-table-cell{
+  background-color: #121312 !important;
+  color: white !important;
+}
+span{
+  display: flex;
+}
+
+
+/* Change pagination text color to white */
+.ant-table-pagination .ant-pagination-item a, 
+.ant-table-pagination .ant-pagination-prev a, 
+.ant-table-pagination .ant-pagination-next a,
+.ant-table-pagination .ant-pagination-jump-prev a,
+.ant-table-pagination .ant-pagination-jump-next a,
+.ant-pagination-item-ellipsis {
+  color: white !important; /* Use !important to override Ant Design's styles */
+}
+
+/* Change pagination border color to white */
+.ant-table-pagination .ant-pagination-item, 
+.ant-table-pagination .ant-pagination-prev, 
+.ant-table-pagination .ant-pagination-next,
+.ant-table-pagination .ant-pagination-jump-prev,
+.ant-table-pagination .ant-pagination-jump-next {
+  border-color: white !important; /* Use !important to override Ant Design's styles */
+}
+
+/* Keep the active item in its default setting */
+.ant-table-pagination .ant-pagination-item-active a {
+  color: initial !important;
+}
+
+/* Change next and previous page text color to white */
+.ant-table-pagination .ant-pagination-prev .ant-pagination-item-link,
+.ant-table-pagination .ant-pagination-next .ant-pagination-item-link {
+  color: white !important;
+}
+
+/* Change next and previous page border color to white */
+.ant-table-pagination .ant-pagination-prev,
+.ant-table-pagination .ant-pagination-next {
+  border-color: white !important;
+}
+
+/* Change next and previous page text color on hover to white */
+.ant-table-pagination .ant-pagination-prev:hover .ant-pagination-item-link,
+.ant-table-pagination .ant-pagination-next:hover .ant-pagination-item-link {
+  color: white !important;
+}
+/* Change hover color to gray */
+.ant-table-tbody > tr.ant-table-row:hover > td {
+  background-color: #312f2f !important; /* Replace with your desired gray color */
+}
+
+/* Decrease horizontal border size */
+.ant-table .ant-table-tbody > tr.ant-table-row > td {
+  border-bottom: 0.25px solid #3f3c3c; /* Set your preferred color and size */
+}
+
+/* Decrease horizontal border size on hover */
+.ant-table .ant-table-tbody > tr.ant-table-row:hover > td {
+  border-bottom: 0.25px solid #40a9ff; /* Set your preferred color on hover */
+}
+
+/* Decrease horizontal border size in the table header */
+.ant-table-thead > tr > th {
+  border-bottom: 0.5px solid #272525 !important; /* Set your preferred color and size */
+}
+
+
+.holders_links{
+  display: flex;
+}
+.useful_link{
+  display: flex;
+
+}
+.copy-input{
+  color: #40a9ff;
+}
+.token-name{
+  max-width: 100px;
+}
+
+.dark-modal .ant-modal-content {
+  background-color: #333 !important; /* Dark background */
+  color: white !important; /* Light text for general content */
+}
+
+.dark-modal .ant-modal-header {
+  background-color: #444 !important;
+  color: white !important; /* Light text for header */
+}
+
+.dark-modal .ant-modal-title {
+  color: white !important; /* Light text for title */
+}
+
+.dark-modal .ant-modal-body {
+  background-color: #333 !important;
+  color: white !important; /* Light text for body */
+}
+
+.dark-modal .ant-modal-footer {
+  background-color: #444 !important;
+  color: white !important; /* Light text for footer */
+}
+
+.dark-modal .ant-modal-footer button {
+  color: white !important; /* Light text for buttons */
+}
+
+.dark-modal a {
+  color: #4da6ff !important; /* Light color for links */
+}
+
+/* Continue adding additional selectors and styles as needed */
+
+
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+.link{
+  margin-right: 10%;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
