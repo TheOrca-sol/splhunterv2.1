@@ -4,7 +4,6 @@ import { Table, Switch, message,Avatar, Modal, Button,  Divider, Typography,List
 import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { ShareAltOutlined, LoadingOutlined, LockOutlined, UnlockOutlined,CopyOutlined } from '@ant-design/icons';
 
-
 const TableBurnedLP = (top_holders) => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -31,7 +30,7 @@ const TableBurnedLP = (top_holders) => {
 
     
 
-      const handleMoreDetails = async (top_holders, description,total_percentage) => {
+      const handleMoreDetails = async (top_holders, description,total_percentage,pool_id) => {
         try {
           const halfLength = Math.ceil(top_holders.length / 2);
           const firstHalf = top_holders.slice(0, halfLength);
@@ -51,6 +50,13 @@ const TableBurnedLP = (top_holders) => {
                   <Paragraph style={{ color: 'white' }}>{description}</Paragraph>
                 </Typography>
                 <Divider />
+
+                <Typography>
+                  
+                  <Paragraph style={{ color: 'white' }}>{pool_id}</Paragraph>
+                </Typography>
+                <Divider />
+
                 <Typography >
                   <Title style={{ color: 'white' }}level={5}>Top Holders: {parseFloat(total_percentage).toFixed(2)}%</Title>
                 </Typography>
@@ -104,7 +110,7 @@ const TableBurnedLP = (top_holders) => {
     const columns = [
         
         {
-        title: '',
+        title: 'Icon',
         dataIndex: 'icon',
         key: 'icon',
         sorter: false,
@@ -212,13 +218,28 @@ const TableBurnedLP = (top_holders) => {
         dataIndex: 'top_holders',
         key: 'top_holders',
         sorter: false,
-        render: (_, record) => (
-            <div>
-            <Tag style={{ fontSize: 'medium' }} >{parseFloat(record.total_percentage).toFixed(2)}%</Tag><br/>
+        render: (_, record) => {
+          let color = record.total_percentage < 50 ? 'green' : 'red';
+          if (record.total_percentage > 50){
+            return <>
+                <div align='center'>
+              
+                <Tag style={{ fontSize: 'medium' }} color={color}>{parseFloat(record.total_percentage).toFixed(2)}%</Tag><br/>
+                
+                <Button style={{backgroundColor:'#3f3c3c', color:'white'}} onClick={() => handleMoreDetails(record.top_holders, record.description, record.total_percentage)}>View Details</Button>
+              </div></>
+          }
+          else
+            return <>
+            <div align='center'>
+          
+            <Tag style={{ fontSize: 'medium' }} color={color}>{parseFloat(record.total_percentage).toFixed(2)}%</Tag><br/>
             
             <Button style={{backgroundColor:'#3f3c3c', color:'white'}} onClick={() => handleMoreDetails(record.top_holders, record.description, record.total_percentage)}>View Details</Button>
-            </div>
-          ),
+          </div></>
+          }
+          
+        
           
           
         },
@@ -274,7 +295,7 @@ const TableBurnedLP = (top_holders) => {
     const fetchData = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://theorca.pythonanywhere.com/');
+            const response = await axios.get('http://localhost:5000');
         
             const newData = response.data.mintAddress_list.map((address, index) => ({
                 key: index,
@@ -334,6 +355,8 @@ const TableBurnedLP = (top_holders) => {
   
     return (
       <div className='App'>
+        <div className='auto-refresh' align='center'>
+          <label style={{marginRight:'10px'}}>Auto refresh:</label>
         <Switch
           label="Refresh :"
           checkedChildren="Play"
@@ -341,6 +364,8 @@ const TableBurnedLP = (top_holders) => {
           defaultChecked
           onChange={handleSwitchChange}
         />
+        </div>
+        
         <br />
         <Table
           className='table'

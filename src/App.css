@@ -13,6 +13,11 @@
 span{
   display: flex;
 }
+.auto-refresh{
+  display: flex;
+  margin-right: 10px;
+}
+
 
 
 /* Change pagination text color to white */
