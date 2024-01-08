@@ -51,15 +51,7 @@ const TableBurnedLP = (top_holders) => {
                 </Typography>
                 <Divider />
 
-                <Typography>
-                  
-                  <Paragraph style={{ color: 'white' }}>{pool_id}</Paragraph>
-                </Typography>
-                <Divider />
-
-                <Typography >
-                  <Title style={{ color: 'white' }}level={5}>Top Holders: {parseFloat(total_percentage).toFixed(2)}%</Title>
-                </Typography>
+            
                 <div style={{ display: 'flex', justifyContent: 'space-between' }}>
                   <List
                     style={{ flex: 1, marginRight: '10px',color:'white' }}
@@ -295,11 +287,9 @@ const TableBurnedLP = (top_holders) => {
     const fetchData = async () => {
         try {
             setLoading(true);
-<<<<<<< HEAD
+
             const response = await axios.get('https://theorca.pythonanywhere.com/');
-=======
-            const response = await axios.get('https://theorca.pythonanywhere.com/');
->>>>>>> origin/main
+
         
             const newData = response.data.mintAddress_list.map((address, index) => ({
                 key: index,
