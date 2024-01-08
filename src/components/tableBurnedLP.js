@@ -295,7 +295,11 @@ const TableBurnedLP = (top_holders) => {
     const fetchData = async () => {
         try {
             setLoading(true);
-            const response = await axios.get('http://localhost:5000');
+<<<<<<< HEAD
+            const response = await axios.get('https://theorca.pythonanywhere.com/');
+=======
+            const response = await axios.get('https://theorca.pythonanywhere.com/');
+>>>>>>> origin/main
         
             const newData = response.data.mintAddress_list.map((address, index) => ({
                 key: index,
