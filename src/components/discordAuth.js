@@ -41,7 +41,7 @@ const DiscordAuth = ({ onVerified }) => {  // Corrected way to receive props
         }
     };
 
-    const DISCORD_OAUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=1192698504154447892&response_type=code&redirect_uri=https%3A%2F%2Fsplabs.app%2F&scope=identify+guilds`;
+    const DISCORD_OAUTH_URL = `https://discord.com/api/oauth2/authorize?client_id=1192698504154447892&response_type=code&redirect_uri=https%3A%2F%2Fsplabs.app%2Fdiscord-auth&scope=identify+guilds`;
 
     const handleDiscordLogin = () => {
         window.location.href = DISCORD_OAUTH_URL;
