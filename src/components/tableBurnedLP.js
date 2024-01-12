@@ -173,7 +173,7 @@ const TableBurnedLP = (top_holders) => {
         );
         },
         },
-        {
+        /*{
         title: 'Pool id',
         dataIndex: 'pool_id',
         key: 'pool_id',
@@ -190,7 +190,7 @@ const TableBurnedLP = (top_holders) => {
               {truncatedPoolId}</span>
                 </CopyToClipboard>
             );},
-        },
+        },*/
         {
         title: 'Start Time',
         dataIndex: 'trade_startTime',
@@ -299,7 +299,7 @@ const TableBurnedLP = (top_holders) => {
                 description: response.data.description_list[index],
                 minting: response.data.minting_list[index],
                 freeze: response.data.freeze_account_list[index],
-                pool_id: response.data.pool_id_list[index],
+                //pool_id: response.data.pool_id_list[index],
                 trade_startTime:response.data.trade_startTime_list[index],
                 top_holders:response.data.top_holders_list[index],
                 links:response.data.links_list[index],
