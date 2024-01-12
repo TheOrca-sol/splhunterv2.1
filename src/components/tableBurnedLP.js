@@ -216,7 +216,7 @@ const TableBurnedLP = (top_holders) => {
             return <>
                 <div align='center'>
               
-                <Tag style={{ fontSize: 'medium' }} color={color}>{parseFloat(record.total_percentage).toFixed(2)}%</Tag><br/>
+                <Tag style={{ fontSize: 'medium' }} color={color}>{parseFloat(record.total_percentage).toFixed(2)}%</Tag><br/><br/>
                 
                 <Button style={{backgroundColor:'#3f3c3c', color:'white'}} onClick={() => handleMoreDetails(record.top_holders, record.description, record.total_percentage)}>View Details</Button>
               </div></>
@@ -225,7 +225,7 @@ const TableBurnedLP = (top_holders) => {
             return <>
             <div align='center'>
           
-            <Tag style={{ fontSize: 'medium' }} color={color}>{parseFloat(record.total_percentage).toFixed(2)}%</Tag><br/>
+            <Tag style={{ fontSize: 'medium' }} color={color}>{parseFloat(record.total_percentage).toFixed(2)}%</Tag><br/><br/>
             
             <Button style={{backgroundColor:'#3f3c3c', color:'white'}} onClick={() => handleMoreDetails(record.top_holders, record.description, record.total_percentage)}>View Details</Button>
           </div></>
