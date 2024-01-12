@@ -20,6 +20,7 @@ import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import InboxIcon from '@mui/icons-material/MoveToInbox';
 import MailIcon from '@mui/icons-material/Mail';
+import HomeIcon from '@mui/icons-material/Home';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import RadarChartOutlined from '@ant-design/icons/RadarChartOutlined'
 import TokenTable from './TokenTable';
@@ -27,10 +28,16 @@ import { Icon } from '@iconify/react';
 import TableBurnedLP from './tableBurnedLP';
 import DiscordAuth from './discordAuth'
 import { AuthContext } from '../AuthContext';
-import { message } from 'antd';
+import { Avatar, message } from 'antd';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 import Button from '@mui/material/Button';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { AuthProvider } from '../AuthContext';
+import SPLRaids from './SplRaids'
+import Home from './Home'
+import SplHunter from './SplHunter';
+import Paper from '@mui/material/Paper';
 
 
 
@@ -106,12 +113,19 @@ const MiniDrawer = ({ darkMode, setDarkMode }) => {
   const theme = useTheme();
   const [open, setOpen] = React.useState(false);
   const { isAuthorized, verifyRole } = useContext(AuthContext); 
+  const handleClick = (url) => {
+    window.location.href = url; // This will navigate in the same tab
+  };
   const listItems = [
     { text: 'Twitter', url: 'https://twitter.com/SPLabs_sol', icon: <TwitterIcon /> },
     { text: 'Discord', url: 'https://discord.gg/rfZRuxMSVa', icon: <Icon icon="mingcute:discord-line" width="26" /> },
   ];
+  const firstMenuSection = [
+    { text: 'Twitter', url: '/', icon: <TwitterIcon /> },
+    { text: 'Discord', url: '/spl-hunter', icon: <Icon icon="mingcute:discord-line" width="26" /> },
+  ];
 
-  const handleClick = (url) => {
+  const handleClicksocial = (url) => {
     // Open the URL in a new tab
     window.open(url, '_blank');
   };
@@ -210,7 +224,7 @@ const MiniDrawer = ({ darkMode, setDarkMode }) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            SPLabs
+            <Avatar className='app-icon' size={{ xxl: 30 }} src={process.env.PUBLIC_URL+'./splabslogo2.png'}/> SPLabs
           </Typography>
 
         </Toolbar>
@@ -224,14 +238,15 @@ const MiniDrawer = ({ darkMode, setDarkMode }) => {
         </DrawerHeader>
         <Divider />
         <List>
-          {['SPL Hunter'].map((text, index) => (
-            <ListItem key={text} disablePadding sx={{ display: 'block' }}>
+          {firstMenuSection.map((item, index) => (
+            <ListItem key={item.text} disablePadding sx={{ display: 'block' }}>
               <ListItemButton
                 sx={{
                   minHeight: 48,
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
+                onClick={() => handleClick(item.url)}
               >
                 <ListItemIcon
                   sx={{
@@ -240,9 +255,9 @@ const MiniDrawer = ({ darkMode, setDarkMode }) => {
                     justifyContent: 'center',
                   }}
                 >
-                  {index % 2 === 0 ? <RadarChartOutlined width="26"/> : <MailIcon />}
+                  {index % 2 === 0 ? <HomeIcon />:<RadarChartOutlined width="26"/> }
                 </ListItemIcon>
-                <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+                <ListItemText primary={item.text} sx={{ opacity: open ? 1 : 0 }} />
               </ListItemButton>
             </ListItem>
           ))}
@@ -257,7 +272,7 @@ const MiniDrawer = ({ darkMode, setDarkMode }) => {
                   justifyContent: open ? 'initial' : 'center',
                   px: 2.5,
                 }}
-                onClick={() => handleClick(item.url)}
+                onClick={() => handleClicksocial(item.url)}
               >
                 <ListItemIcon
                   sx={{
@@ -276,22 +291,19 @@ const MiniDrawer = ({ darkMode, setDarkMode }) => {
       </Drawer>
       
       
-        <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-          <DrawerHeader />
-          <Snackbar
-            open={snackbarInfo.open}
-            autoHideDuration={10000}
-            onClose={closeSnackbar}
-            anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
-          >
-            <Alert onClose={closeSnackbar} severity={snackbarInfo.severity} sx={{ width: '100%' }}>
-              {snackbarInfo.message}
-            </Alert>
-          </Snackbar>
-          {!isAuthorized && <DiscordAuth onVerified={verifyDiscordRole} />}
-          {isAuthorized && <TableBurnedLP darkMode={darkMode} setDarkMode={setDarkMode} />}
-          {/* Other components */}
-        </Box>
+
+      <Box component="main" sx={{ flexGrow: 1, p: 3 }} style={{marginTop:50}}>
+        <Router>
+          <Routes>
+            <Route path="/" element={<Home/>} />
+            <Route path="/discord-auth" element={<DiscordAuth />} />
+            <Route path='/spl-raids' element={<SPLRaids/>}/>
+            <Route path='/spl-hunter' element={<SplHunter/>}/>
+        
+          </Routes>
+        </Router>
+      </Box>
+    
      
       </Box> 
     </ThemeProvider>

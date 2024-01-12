@@ -129,6 +129,22 @@ span{
 }
 
 /* Continue adding additional selectors and styles as needed */
+.carousel-inner p{
+  color: white !important;
+  opacity: 200% !important;
+}
+.home h5{
+  color: rgb(228, 114, 8) !important;
+ 
+}
+.carousel-placeholder{
+  
+  opacity: 80%;
+}
+.why-card{
+  background-color: rgb(92, 48, 8) !important;
+  color: white !important;
+}
 
 
 
@@ -140,8 +156,8 @@ span{
   margin-right: 10%;
 }
 @media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+  .app-icon {
+    animation: App-logo-spin infinite 5s linear;
   }
 }
 
