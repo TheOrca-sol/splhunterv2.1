@@ -35,7 +35,7 @@ const DiscordAuth = ({ onVerified }) => {  // Corrected way to receive props
                 onVerified(code); // Manually trigger onVerified
             }
 
-            navigate('/'); // Redirect after the process
+            navigate('/spl-hunter'); // Redirect after the process
         } catch (error) {
             console.error('Error in token exchange:', error);
         }
