@@ -30,7 +30,7 @@ const TableBurnedLP = (top_holders) => {
 
     
 
-      const handleMoreDetails = async (top_holders, description,total_percentage,pool_id) => {
+      const handleMoreDetails = async (top_holders, description,total_percentage) => {
         try {
           const halfLength = Math.ceil(top_holders.length / 2);
           const firstHalf = top_holders.slice(0, halfLength);
